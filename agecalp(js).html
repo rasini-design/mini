@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>livesec calclator</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #cal{
+           width: 400px;
+           height: 400px;
+           background-color: rgb(131, 233, 199);
+           text-align: center;
+           margin: auto;
+           padding: 50px;
+           border-radius: 50%;
+           border: 1px groove black;
+           
+        }
+        input{
+            width: 200px;
+            height: 60px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 5px 5px 10px 10px rgb(78, 76, 76);  
+        }
+        #ls{
+            font-size: 30px;
+        }
+        button{
+            width: 60px;
+            height: 30px;
+            border-radius: 20px;
+            background-color: rgb(40, 40, 187);
+            border: none;
+            color: white;
+        }
+        .p{
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+        body{
+            background-color:burlywood;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>DID YOU KNOW YOUR LIVING SECONDS...,,</h1>
+    <p class="p">Find Out Here</p>
+    <div id="cal">
+        <label style="font-size: 20px;">Enter your Birth Date & Timing</label><br><br>
+        <input type="datetime-local" id="bd"><br><br>
+        <button id="c">Find</button>
+
+    <p id="ls"></p>
+    <h4>Here know also your age</h4>
+    <p id="ly"></p>
+    <p id="lm"></p>
+    </div>
+    
+     <script>
+        document.querySelector("#cal").addEventListener("click",function(){
+                const u = function(){
+                    let birth = document.querySelector("#bd").value,
+                    day = new Date(birth),
+                    time = day.getTime(),
+                    today = new Date(),
+                    timenow = today.getTime(),
+                    value = timenow-time
+                    sec = Math.floor(value/1000),
+                    year = Math.floor(value/(1000*60*60*24*365.25)),
+                    month = Math.floor(value/(1000*60*60*24*30.4375));
+                     
+            let s = function(x,y){
+                document.querySelector(x).innerHTML = y;
+            }
+            s("#ls",sec +"-secounds");
+            s("#ly","you are "+year +"-years old");
+            s("#lm","you are live in "+month +"-months");
+             }  
+             setInterval(u,1000);    
+        })
+     </script>
+     
+     </body>
+     </html>
+    
